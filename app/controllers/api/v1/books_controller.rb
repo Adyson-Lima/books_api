@@ -10,6 +10,15 @@ class Api::V1::BooksController < ApplicationController
   def show
     render json: @book
   end
+
+  def create
+    @book = Book.new(book_params)
+    if @book.save
+      render json: @book, status: :created, location: api_v1_book_url(@book)
+    else
+      render json: @book.errors, status: :internal_server_error
+    end
+  end
   
 private
 
