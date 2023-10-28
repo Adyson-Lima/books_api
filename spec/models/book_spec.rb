@@ -12,7 +12,7 @@ RSpec.describe Book, type: :model do
     end
 
     it 'description consegue ser preenchido?' do
-      @book.description = ""
+      @book.description = "Um bom livro de ruby"
       expect(@book.description).to eq("Um bom livro de ruby")
     end
 
