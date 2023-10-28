@@ -11,6 +11,11 @@ RSpec.describe Book, type: :model do
       expect(@book.title).to eq("Ruby 3")
     end
 
+    it 'description consegue ser preenchido?' do
+      @book.description = ""
+      expect(@book.description).to eq("Um bom livro de ruby")
+    end
+
   end
       
 end
