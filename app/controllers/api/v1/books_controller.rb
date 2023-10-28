@@ -1,6 +1,6 @@
 class Api::V1::BooksController < ApplicationController
 
-  before_action :set_book, only: %i[ show ] #update destroy
+  before_action :set_book, only: %i[ show update] #update destroy
 
   def index
     @books = Book.all
@@ -15,6 +15,14 @@ class Api::V1::BooksController < ApplicationController
     @book = Book.new(book_params)
     if @book.save
       render json: @book, status: :created, location: api_v1_book_url(@book)
+    else
+      render json: @book.errors, status: :internal_server_error
+    end
+  end
+
+  def update
+    if @book.update(book_params)
+      render json: @book
     else
       render json: @book.errors, status: :internal_server_error
     end
