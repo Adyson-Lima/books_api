@@ -38,4 +38,14 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/books/id' do
+    it 'Consegue apagar um book e retornar 204?' do
+      book = Book.last
+      delete :destroy, params: {id: book.id}
+
+      expect(Book.all).not_to include(book)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
