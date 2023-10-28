@@ -1,10 +1,14 @@
 class Api::V1::BooksController < ApplicationController
 
-  #before_action :set_book, only: %i[ show update destroy ]
+  before_action :set_book, only: %i[ show ] #update destroy
 
   def index
     @books = Book.all
     render json: @books
+  end
+
+  def show
+    render json: @book
   end
   
 private
