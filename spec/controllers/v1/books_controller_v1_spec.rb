@@ -20,4 +20,12 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/books' do
+    it 'Consegue criar um book e retornar status 201?' do
+      post :create, params: {book: {title: "rails 7", description: "um bom livro de rails 7"},format: :json}
+      expect(response.body).to include_json(title: "rails 7")
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
