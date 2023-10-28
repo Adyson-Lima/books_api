@@ -14,7 +14,7 @@ RSpec.describe Book, type: :model do
 
     it 'description consegue ser preenchido?' do
       @book.description = "Um bom livro de ruby"
-      
+
       expect(@book.description).to eq("Um bom livro de ruby")
     end
 
@@ -27,6 +27,12 @@ RSpec.describe Book, type: :model do
       @book.description = "melhor livro sobre rails 7"
 
       expect(@book).to be_valid
+    end
+
+    it 'Book invalido com campos obrigatorios não preenchidos?' do
+      book = Book.new
+
+      expect(book).to be_valid
     end
 
   end
