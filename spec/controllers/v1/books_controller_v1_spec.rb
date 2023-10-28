@@ -28,4 +28,14 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/books/id' do
+    it 'Consegue atualizar um book e retornar status 200?' do
+      book = Book.last
+      patch :update, params: {book: {title: "ruby 3", description: "livro de ruby 3"},id: book.id}
+
+      expect(response.body).to include_json(title: "ruby 3")
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
