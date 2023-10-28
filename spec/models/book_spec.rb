@@ -17,5 +17,15 @@ RSpec.describe Book, type: :model do
     end
 
   end
+
+  describe 'Teste de validacao do model Book' do
+
+    it 'Book valido com campos obrigatorios preenchidos?' do
+      @book.title = ""
+      @book.description = ""
+      expect(@book).to be_valid
+    end
+
+  end
       
 end
