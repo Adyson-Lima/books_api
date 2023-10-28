@@ -1,6 +1,6 @@
 class Api::V1::BooksController < ApplicationController
 
-  before_action :set_book, only: %i[ show update] #update destroy
+  before_action :set_book, only: %i[ show update destroy] #show update destroy
 
   def index
     @books = Book.all
@@ -26,6 +26,10 @@ class Api::V1::BooksController < ApplicationController
     else
       render json: @book.errors, status: :internal_server_error
     end
+  end
+
+  def destroy
+    @book.destroy
   end
   
 private
