@@ -8,11 +8,13 @@ RSpec.describe Book, type: :model do
 
     it 'title consegue ser preenchido?' do
       @book.title = "Ruby 3"
+
       expect(@book.title).to eq("Ruby 3")
     end
 
     it 'description consegue ser preenchido?' do
       @book.description = "Um bom livro de ruby"
+      
       expect(@book.description).to eq("Um bom livro de ruby")
     end
 
@@ -21,8 +23,9 @@ RSpec.describe Book, type: :model do
   describe 'Teste de validacao do model Book' do
 
     it 'Book valido com campos obrigatorios preenchidos?' do
-      @book.title = ""
-      @book.description = ""
+      @book.title = "Rails 7"
+      @book.description = "melhor livro sobre rails 7"
+
       expect(@book).to be_valid
     end
 
