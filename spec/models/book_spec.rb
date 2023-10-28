@@ -32,7 +32,7 @@ RSpec.describe Book, type: :model do
     it 'Book invalido com campos obrigatorios não preenchidos?' do
       book = Book.new
 
-      expect(book).to be_valid
+      expect(book).to be_invalid
     end
 
   end
